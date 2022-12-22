@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:love_test_app/screen/home_screen/home_screen.dart';
+import 'package:love_test_app/utils/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      initialRoute: HomeScreen.routeName,
+      routes: routes,
     );
   }
 }
