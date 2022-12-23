@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:love_test_app/screen/home_screen/components/my_text_field.dart';
+import 'package:love_test_app/utils/all_utilities.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'home_screen';
@@ -9,17 +11,27 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/bg_image.png'),
+              image: AssetImage('assets/images/bg_image.png'),
               fit: BoxFit.cover,
             ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('text'),
+            children:  [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                child: Center(
+                  child: Text('Love Test', style: TextStyle(
+                    fontFamily: "BuiltTitlingRg",
+                    fontSize: 500.sp,
+                    color: Colors.white,
+                  )),
+                ),
+              ),
+              const MyTextField(hintText: 'Enter your name',),
+              const MyTextField(hintText: 'His/Her name',),
             ],
           ),
         ),
