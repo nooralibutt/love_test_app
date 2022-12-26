@@ -1,4 +1,3 @@
-import 'package:google_fonts/google_fonts.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class MyTextField extends StatelessWidget {
@@ -20,7 +19,7 @@ class MyTextField extends StatelessWidget {
         keyboardType: TextInputType.name,
         decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: GoogleFonts.poppins(fontSize: 80.sp),
+            hintStyle: TextStyle(fontSize: 80.sp),
             isDense: true,
             fillColor: Colors.white,
             hoverColor: Colors.white,
