@@ -1,9 +1,9 @@
 import 'package:love_test_app/utils/all_utilities.dart';
 
-class BaseScaffold extends StatelessWidget {
+class BackgroundImage extends StatelessWidget {
   final Widget child;
 
-  const BaseScaffold({Key? key, required this.child}) : super(key: key);
+  const BackgroundImage({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
