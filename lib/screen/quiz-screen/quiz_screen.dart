@@ -13,6 +13,7 @@ class QuizScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int index = ModalRoute.of(context)?.settings.arguments as int? ?? 0;
+    List<bool> correctAnswersList = [];
     final questions = QuizModel.quiz1;
     return BackgroundImage(
       child: SingleChildScrollView(
@@ -20,20 +21,22 @@ class QuizScreen extends StatelessWidget {
           HeadingText(
             headingText: questions[index].headingText,
           ),
-          ..._buildButton(questions[index].options, index),
+          ..._buildButton(questions[index].options, index, correctAnswersList),
           SizedBox(height: 70.h),
           Text('${index + 1}/10',
-              style: TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold))
+              style: TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold)),
         ]),
       ),
     );
   }
 
-  List<_BuildButton> _buildButton(List<String> options, int index) {
+  List<_BuildButton> _buildButton(
+      List<String> options, int index, List<bool> correctAnswersList) {
     final questions = QuizModel.quiz1;
     List<_BuildButton> list = [];
     for (int i = 0; i < options.length; i++) {
       final widget = _BuildButton(
+        correctAnswersList: correctAnswersList,
         index: index,
         text: options[i],
       );
@@ -48,10 +51,12 @@ class _BuildButton extends StatelessWidget {
     Key? key,
     required this.index,
     required this.text,
+    required this.correctAnswersList,
   }) : super(key: key);
 
   final int index;
   final String text;
+  final List<bool> correctAnswersList;
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +66,22 @@ class _BuildButton extends StatelessWidget {
       child: GeneralElevatedButton(
         buttonWidth: 250,
         fontColor: Colors.black,
+        text: text,
         onPressed: () {
           if (index >= questions.length - 1) {
             Navigator.pushNamed(context, HomeScreen.routeName);
           } else {
+            if (questions[index].correctAnswer == text) {
+              correctAnswersList.add(true);
+            } else {
+              correctAnswersList.add(false);
+            }
             Navigator.pushNamed(context, QuizScreen.routeName,
                 arguments: index + 1);
           }
         },
         fontSize: 90.sp,
         backgroundColor: Colors.white,
-        text: text,
         internalPadding: const EdgeInsets.all(20),
       ),
     );
