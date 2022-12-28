@@ -1,6 +1,7 @@
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/screen/home_screen/components/my_text_field.dart';
+import 'package:love_test_app/screen/quiz-screen/quiz_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,9 +39,13 @@ class HomeScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 110, vertical: 60),
                 child: GeneralElevatedButton(
-                  buttonHeight: 40,
+                  buttonWidth: 200,
                   text: 'Start Test',
-                  onPressed: () {},
+                  fontColor: Colors.black,
+                  internalPadding: const EdgeInsets.all(1),
+                  onPressed: () {
+                    Navigator.pushNamed(context, QuizScreen.routeName);
+                  },
                   fontSize: 20,
                   backgroundColor: const Color(0xff00d300),
                 ))
