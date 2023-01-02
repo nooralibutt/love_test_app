@@ -44,7 +44,8 @@ class HomeScreen extends StatelessWidget {
                   fontColor: Colors.black,
                   internalPadding: const EdgeInsets.all(1),
                   onPressed: () {
-                    Navigator.pushNamed(context, QuizScreen.routeName);
+                    Navigator.pushReplacementNamed(
+                        context, QuizScreen.routeName);
                   },
                   fontSize: 20,
                   backgroundColor: const Color(0xff00d300),
