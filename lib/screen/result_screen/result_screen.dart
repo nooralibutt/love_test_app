@@ -1,6 +1,8 @@
+import 'package:love_test_app/controller/correct_answers_list.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
+import 'package:love_test_app/screen/quiz-screen/quiz_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -17,6 +19,22 @@ class ResultScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            height: 150,
+            width: 300,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/images/bg_image.png'),
+                    fit: BoxFit.cover)),
+            child: Center(
+                child: Text(
+                    '${QuizController.resultValue.toStringAsFixed(0)} % ',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 140.sp))),
+          ),
+          SizedBox(height: 190.h),
           GeneralElevatedButton(
               onPressed: () {},
               fontSize: 120.sp,
@@ -28,6 +46,8 @@ class ResultScreen extends StatelessWidget {
           SizedBox(height: 190.h),
           GeneralElevatedButton(
               onPressed: () {
+                QuizController.resultValue = 0;
+                QuizController.correctAnswers.clear();
                 Navigator.pushNamed(context, HomeScreen.routeName);
               },
               fontSize: 120.sp,
@@ -39,5 +59,9 @@ class ResultScreen extends StatelessWidget {
         ],
       ),
     ));
+  }
+
+  void calculateLove() {
+    QuizScreen quizScreen = const QuizScreen();
   }
 }
