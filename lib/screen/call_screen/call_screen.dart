@@ -1,11 +1,31 @@
 import 'package:love_test_app/screen/call_screen/components/accept_call_button.dart';
 import 'package:love_test_app/screen/call_screen/components/icon_card.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
+import 'package:love_test_app/utils/my_audio_player.dart';
 
-class CallScreen extends StatelessWidget {
+class CallScreen extends StatefulWidget {
   static const String routeName = 'call_screen';
 
   const CallScreen({Key? key}) : super(key: key);
+
+  @override
+  State<CallScreen> createState() => _CallScreenState();
+}
+
+class _CallScreenState extends State<CallScreen> {
+  @override
+  void initState() {
+    MyAudioPlayer.instance.playRingtone();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    MyAudioPlayer.instance.stopRingtone();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +57,7 @@ class CallScreen extends StatelessWidget {
             SizedBox(height: 100.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 AcceptCallButton(
                   icon: Icons.call_end,
                   bgColor: Colors.red,
