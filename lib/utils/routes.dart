@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:love_test_app/chat_screen/chat/chat_screen.dart';
+import 'package:love_test_app/chat_screen/chat_level_screen.dart';
 import 'package:love_test_app/screen/call_screen/call_screen.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/quiz_screen.dart';
@@ -11,4 +13,6 @@ final Map<String, WidgetBuilder> routes = {
   ResultScreen.routeName: (_) => const ResultScreen(),
   QuizListScreen.routeName: (_) => const QuizListScreen(),
   CallScreen.routeName: (_) => const CallScreen(),
+  ChatLevelScreen.routeName: (_) => ChatLevelScreen(),
+  ChatScreen.routeName: (_) => ChatScreen(),
 };

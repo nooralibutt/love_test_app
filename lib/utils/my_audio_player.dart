@@ -14,6 +14,11 @@ class MyAudioPlayer {
 
   Future<void> init() => _audioCache.loadAll([
         'call_opening.mp3',
+        'button tap.mp3',
+        'receive.mp3'
+            'sent.mp3'
+            'level fail sound.mp3',
+        'applause.mp3',
       ]);
 
   Future<AudioPlayer> playRingtone() => _audioCache
@@ -29,4 +34,15 @@ class MyAudioPlayer {
     _audioPlayer?.stop();
     _audioPlayer = null;
   }
+
+  Future<AudioPlayer> playButtonTap() => _audioCache.play('button tap.mp3');
+
+  Future<AudioPlayer> playApplause() => _audioCache.play('applause.mp3');
+
+  Future<AudioPlayer> playMessageSent() => _audioCache.play('sent.mp3');
+
+  Future<AudioPlayer> playMessageReceived() => _audioCache.play('receive.mp3');
+
+  Future<AudioPlayer> playLevelFailed() =>
+      _audioCache.play('level fail sound.mp3');
 }

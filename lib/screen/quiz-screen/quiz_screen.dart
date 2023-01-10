@@ -1,10 +1,10 @@
+import 'package:love_test_app/chat_screen/chat_level_screen.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/model/quiz_model.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/components/heading_text.dart';
-import 'package:love_test_app/screen/result_screen/result_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class QuizScreen extends StatelessWidget {
@@ -71,7 +71,7 @@ class _BuildButton extends StatelessWidget {
             }
             QuizController.resultValue =
                 QuizController.resultValue.roundToDouble() * 10;
-            Navigator.pushReplacementNamed(context, ResultScreen.routeName);
+            Navigator.pushReplacementNamed(context, ChatLevelScreen.routeName);
           } else {
             if (questions[index].correctAnswer == text) {
               QuizController.correctAnswers.add(true);
