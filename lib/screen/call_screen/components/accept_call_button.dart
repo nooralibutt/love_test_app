@@ -3,8 +3,13 @@ import 'package:love_test_app/utils/all_utilities.dart';
 class AcceptCallButton extends StatelessWidget {
   final IconData icon;
   final Color bgColor;
+  final void Function() onPressed;
 
-  const AcceptCallButton({Key? key, required this.icon, required this.bgColor})
+  const AcceptCallButton(
+      {Key? key,
+      required this.icon,
+      required this.bgColor,
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -16,8 +21,8 @@ class AcceptCallButton extends StatelessWidget {
         color: bgColor,
         shape: const CircleBorder(),
       ),
-      child:
-          IconButton(color: Colors.white, onPressed: () {}, icon: Icon(icon)),
+      child: IconButton(
+          color: Colors.white, onPressed: onPressed, icon: Icon(icon)),
     );
   }
 }
