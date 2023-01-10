@@ -1,4 +1,4 @@
-import 'package:love_test_app/controller/correct_answers_list.dart';
+import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/model/quiz_model.dart';
@@ -14,17 +14,24 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int index = ModalRoute.of(context)?.settings.arguments as int? ?? 0;
-    final questions = QuizModel.quiz1;
+    final index = ModalRoute.of(context)?.settings.arguments as int? ?? 0;
     return WillPopScope(
-      onWillPop: () => showExitPopUp(context),
+      onWillPop: () => QuizController.showExitPopUp(
+          context: context,
+          onPressedExit: () {
+            QuizController.correctAnswers.clear();
+            QuizController.resultValue = 0;
+            Navigator.pop(context);
+            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          },
+          dialogText: 'Do you want to leave the Love test?'),
       child: BackgroundImage(
         child: SingleChildScrollView(
           child: Column(children: [
             HeadingText(
-              headingText: questions[index].headingText,
+              headingText: QuizController.selectedQuiz[index].headingText,
             ),
-            ..._buildButton(questions[index].options, index),
+            ...buildButton(QuizController.selectedQuiz[index].options, index),
             SizedBox(height: 70.h),
             Text('${index + 1}/10',
                 style:
@@ -33,65 +40,6 @@ class QuizScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<bool> showExitPopUp(context) async {
-    return await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Container(
-              height: 90,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Do you want to leave the Love test?'),
-                  SizedBox(
-                    height: 80.h,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.pink),
-                        onPressed: () {
-                          QuizController.correctAnswers.clear();
-                          QuizController.resultValue = 0;
-                          Navigator.pushNamed(context, HomeScreen.routeName);
-                        },
-                        child: const Text('Yes'),
-                      )),
-                      SizedBox(width: 20.w),
-                      Expanded(
-                          child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.pink),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('No'),
-                      )),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
-  List<_BuildButton> _buildButton(List<String> options, int index) {
-    final questions = QuizModel.quiz1;
-    List<_BuildButton> list = [];
-    for (int i = 0; i < options.length; i++) {
-      final widget = _BuildButton(
-        index: index,
-        text: options[i],
-      );
-      list.add(widget);
-    }
-    return list;
   }
 }
 
@@ -129,7 +77,6 @@ class _BuildButton extends StatelessWidget {
               QuizController.correctAnswers.add(true);
             } else {
               QuizController.correctAnswers.add(false);
-              print(QuizController.correctAnswers);
             }
             Navigator.pushReplacementNamed(context, QuizScreen.routeName,
                 arguments: index + 1);
@@ -141,4 +88,16 @@ class _BuildButton extends StatelessWidget {
       ),
     );
   }
+}
+
+List<_BuildButton> buildButton(List<String> options, int index) {
+  List<_BuildButton> list = [];
+  for (int i = 0; i < options.length; i++) {
+    final widget = _BuildButton(
+      index: index,
+      text: options[i],
+    );
+    list.add(widget);
+  }
+  return list;
 }
