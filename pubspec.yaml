@@ -30,6 +30,7 @@ flutter:
 
   assets:
     - assets/images/bg_image.png
+    - assets/audio/
 
 
   fonts:
