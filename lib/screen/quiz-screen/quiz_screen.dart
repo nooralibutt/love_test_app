@@ -22,6 +22,8 @@ class QuizScreen extends StatelessWidget {
           onPressedExit: () {
             QuizController.correctAnswers.clear();
             QuizController.resultValue = 0;
+            QuizController.herName = '';
+            QuizController.hisName = '';
             Navigator.pop(context);
             Navigator.pushReplacementNamed(context, HomeScreen.routeName);
           },
@@ -71,11 +73,10 @@ class _BuildButtonState extends State<_BuildButton> {
         buttonWidth: 250,
         fontColor: Colors.black,
         text: widget.text,
-        onPressed: () async {
-          if (widget.index == 6 && ,,!isCallScreenShowed) {
-            isCallScreenShowed =
-                await (Navigator.pushNamed(context, CallScreen.routeName))
-                    as bool;
+        onPressed: () {
+          if (widget.index == 6 && !isCallScreenShowed) {
+            isCallScreenShowed = true;
+            Navigator.pushNamed(context, CallScreen.routeName);
             return;
           }
           if (widget.index >= questions.length - 1) {
@@ -85,7 +86,7 @@ class _BuildButtonState extends State<_BuildButton> {
               }
             }
             QuizController.resultValue =
-                QuizController.resultValue.roundToDouble() * 10;
+                QuizController.resultValue.roundToDouble() / 10;
             if (QuizController.isAnswered == true) {
               QuizController.resultValue = QuizController.resultValue - 20.0;
             }

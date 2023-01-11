@@ -6,6 +6,8 @@ class QuizController {
   static List<bool> correctAnswers = [];
   static double resultValue = 0;
   static bool isAnswered = false;
+  static String hisName = '';
+  static String herName = '';
 
   static Future<bool> showExitPopUp(
       {required BuildContext context,

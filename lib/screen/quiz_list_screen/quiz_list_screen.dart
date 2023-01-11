@@ -31,6 +31,17 @@ class QuizListScreen extends StatelessWidget {
           ),
         ));
 
+    list.insert(
+        1,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(QuizController.hisName, style: TextStyle(fontSize: 80.sp)),
+            Text('  ❤️  ', style: TextStyle(fontSize: 80.sp)),
+            Text(QuizController.herName, style: TextStyle(fontSize: 80.sp)),
+          ],
+        ));
+
     return BackgroundImage(
         child: Center(
       child: SingleChildScrollView(

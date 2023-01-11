@@ -39,11 +39,15 @@ class HomeScreen extends StatelessWidget {
               ),
               MyTextField(
                 hintText: 'Enter your name',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  QuizController.hisName = value;
+                },
               ),
               MyTextField(
                 hintText: 'His/Her name',
-                onChanged: (value) {},
+                onChanged: (value) {
+                  QuizController.herName = value;
+                },
               ),
               Padding(
                   padding:
@@ -54,8 +58,21 @@ class HomeScreen extends StatelessWidget {
                     fontColor: Colors.black,
                     internalPadding: const EdgeInsets.all(12),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, QuizListScreen.routeName);
+                      if (QuizController.hisName == '' ||
+                          QuizController.herName == '') {
+                        showDialog(
+                            context: context,
+                            builder: (context) => const SimpleDialog(
+                                  title: Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child:
+                                        Center(child: Text('Enter both names')),
+                                  ),
+                                ));
+                      } else {
+                        Navigator.pushReplacementNamed(
+                            context, QuizListScreen.routeName);
+                      }
                     },
                     fontSize: 20,
                     backgroundColor: const Color(0xff00d300),

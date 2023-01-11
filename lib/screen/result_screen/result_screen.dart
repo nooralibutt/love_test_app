@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -31,22 +32,32 @@ class ResultScreen extends StatelessWidget {
           children: [
             Container(
               height: 150,
-              width: 300,
+              width: 200,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/bg_image.png'),
                       fit: BoxFit.cover)),
-              child: Center(
-                  child: Text(
-                      '${QuizController.resultValue.toStringAsFixed(0)} % ',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 140.sp))),
+              child: LiquidLinearProgressIndicator(
+                value: QuizController.resultValue,
+                valueColor: AlwaysStoppedAnimation(Colors.red),
+                backgroundColor: Colors.transparent,
+                borderColor: Colors.transparent,
+                borderWidth: QuizController.resultValue,
+                direction: Axis.vertical,
+                // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                center: Text(
+                    'Love Percentage' +
+                        '  =  ' +
+                        ('${QuizController.resultValue}'),
+                    style:
+                        const TextStyle(color: Colors.white)), //text inside it
+              ),
             ),
             SizedBox(height: 190.h),
             GeneralElevatedButton(
                 onPressed: () {
+                  QuizController.herName = '';
+                  QuizController.hisName = '';
                   Navigator.pushReplacementNamed(
                       context, QuizListScreen.routeName);
                 },

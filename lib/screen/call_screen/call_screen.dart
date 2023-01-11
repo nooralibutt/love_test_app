@@ -37,7 +37,7 @@ class _CallScreenState extends State<CallScreen> {
           children: [
             SizedBox(height: 170.h),
             Center(
-                child: Text('Unknown',
+                child: Text('Maria',
                     style: TextStyle(color: Colors.white, fontSize: 110.sp))),
             SizedBox(height: 20.h),
             Center(
@@ -65,7 +65,7 @@ class _CallScreenState extends State<CallScreen> {
                   onPressed: () {
                     Navigator.pop(context, true);
                     QuizController.isAnswered = false;
-                    showDialog(
+                    showDialog<bool>(
                         context: context,
                         builder: (context) => AlertDialog(
                               title: const Text(
@@ -76,7 +76,7 @@ class _CallScreenState extends State<CallScreen> {
                                       EdgeInsets.symmetric(horizontal: 20.w),
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.pop(context, true);
+                                      Navigator.pop(context);
                                     },
                                     child: const Text('Next'),
                                   ),
@@ -92,7 +92,7 @@ class _CallScreenState extends State<CallScreen> {
                     onPressed: () {
                       Navigator.pop(context, true);
                       QuizController.isAnswered = true;
-                      showDialog(
+                      showDialog<bool>(
                           context: context,
                           builder: (context) => AlertDialog(
                                 title: const Text(
@@ -103,7 +103,7 @@ class _CallScreenState extends State<CallScreen> {
                                         EdgeInsets.symmetric(horizontal: 20.w),
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.pop(context, true);
+                                        Navigator.pop(context);
                                       },
                                       child: const Text('Next'),
                                     ),
