@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text('Love Test',
                       style: TextStyle(
                         fontFamily: "BuiltTitlingRg",
-                        fontSize: 500.sp,
+                        fontSize: 450.sp,
                         color: Colors.white,
                       )),
                 ),
@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                     buttonWidth: 200,
                     text: 'Start Test',
                     fontColor: Colors.black,
-                    internalPadding: const EdgeInsets.all(1),
+                    internalPadding: const EdgeInsets.all(12),
                     onPressed: () {
                       Navigator.pushReplacementNamed(
                           context, QuizListScreen.routeName);

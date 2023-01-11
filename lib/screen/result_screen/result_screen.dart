@@ -4,6 +4,7 @@ import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
+import 'package:love_test_app/screen/quiz_list_screen/quiz_list_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -45,7 +46,10 @@ class ResultScreen extends StatelessWidget {
             ),
             SizedBox(height: 190.h),
             GeneralElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, QuizListScreen.routeName);
+                },
                 fontSize: 120.sp,
                 backgroundColor: const Color(0xff00c6c6),
                 fontColor: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/screen/call_screen/components/accept_call_button.dart';
 import 'package:love_test_app/screen/call_screen/components/icon_card.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
@@ -61,14 +62,55 @@ class _CallScreenState extends State<CallScreen> {
                 AcceptCallButton(
                   icon: Icons.call_end,
                   bgColor: Colors.red,
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                    QuizController.isAnswered = false;
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: const Text(
+                                  'Congrats, You end a call of stranger girl showing that you love her'),
+                              actions: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.w),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context, true);
+                                    },
+                                    child: const Text('Next'),
+                                  ),
+                                )
+                              ],
+                            ));
+                  },
                 ),
                 SizedBox(width: 200.w),
                 AcceptCallButton(
-                  icon: Icons.call,
-                  bgColor: Colors.green,
-                  onPressed: () => Navigator.pop(context),
-                ),
+                    icon: Icons.call,
+                    bgColor: Colors.green,
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                      QuizController.isAnswered = true;
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: const Text(
+                                    'You are a cheater, you picked up stranger girl phone'),
+                                actions: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20.w),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context, true);
+                                      },
+                                      child: const Text('Next'),
+                                    ),
+                                  )
+                                ],
+                              ));
+                    }),
               ],
             )
           ],

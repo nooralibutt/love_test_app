@@ -5,6 +5,7 @@ class QuizController {
   static List<QuizModel> selectedQuiz = [];
   static List<bool> correctAnswers = [];
   static double resultValue = 0;
+  static bool isAnswered = false;
 
   static Future<bool> showExitPopUp(
       {required BuildContext context,

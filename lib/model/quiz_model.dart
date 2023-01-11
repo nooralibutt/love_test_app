@@ -8,6 +8,11 @@ class QuizModel {
     QuizModel.quiz2,
     QuizModel.quiz3,
     QuizModel.quiz4,
+    QuizModel.quiz5,
+    QuizModel.quiz1,
+    QuizModel.quiz2,
+    QuizModel.quiz3,
+    QuizModel.quiz4,
     QuizModel.quiz5
   ];
 
@@ -70,23 +75,23 @@ class QuizModel {
     QuizModel(
         headingText: 'How often do you talk with Girlfriend?',
         options: [
-          'Everyday, even weekends ',
+          'Everyday, even weekends',
           'most but not everyday',
           'Every once in a while '
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Everyday, even weekends'),
     QuizModel(
         headingText: 'Does girlfriend ever give  your compliments? ',
         options: ['Yes, All of the time! ', 'Occasionally ', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Occasionally'),
     QuizModel(
-        headingText: 'Do you get excited or  nervous when you see him/her?',
+        headingText: 'Do you get excited or nervous when you see him/her?',
         options: ['Yes', 'Sometimes', 'Never'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
-        headingText: 'other People when you’re around? ',
+        headingText: 'Other People when you’re around? ',
         options: ['No', 'A little', 'Yes'],
-        correctAnswer: ''),
+        correctAnswer: 'No'),
     QuizModel(
         headingText:
             'What would you do if you have a date but girlfriend is one hour late?',
@@ -95,23 +100,23 @@ class QuizModel {
           'I’ll wait 30 minutes',
           'I’ll leave immediately'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'I’ll wait until they show up'),
     QuizModel(
-        headingText: 'Do you get excited when  you see Girlfriend?',
+        headingText: 'Do you get excited when you see Girlfriend?',
         options: ['Always', 'Sometimes', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Always'),
     QuizModel(
         headingText: 'Do you enjoy each other’s company?',
         options: ['Yes, we’re really Good friends', 'A little', 'Not at all'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, we’re really Good friends'),
     QuizModel(
-        headingText: 'Bought you something or  made something for you?',
+        headingText: 'Bought you something or made something for you?',
         options: [
           'Yes, just because',
           'Yes, for valentine’s day or my birthday',
           'No'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, just because'),
     QuizModel(
         headingText: 'Is there anything you want to change about girlfriend?',
         options: [
@@ -119,27 +124,27 @@ class QuizModel {
           'A few things',
           'Quite a lot of things'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Nothing, they are perfect'),
     QuizModel(
         headingText: 'How long have you had a crush on girlfriend?',
         options: ['Over a year', 'A few months', 'A few weeks'],
-        correctAnswer: ''),
+        correctAnswer: 'A few weeks'),
   ];
   static final List<QuizModel> quiz3 = [
     QuizModel(
         headingText:
             'Do you honestly think you are falling in love with girlfriend ?',
         options: ['Yes', 'Kind of', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'Do you smile every time you think about girlfriend?',
         options: ['Yes', 'A little', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText:
-            'Would you feel jealous if you saw anyone else  interested in girlfriend?',
+            'Would you feel jealous if you saw anyone else interested in girlfriend?',
         options: ['Definitely', 'I think so', 'Not at all'],
-        correctAnswer: ''),
+        correctAnswer: 'Definitely'),
     QuizModel(
         headingText: 'Do you feel comfortable in each other’s company?',
         options: [
@@ -147,86 +152,86 @@ class QuizModel {
           'No, it feels awkward',
           'We don’t hang out'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, it feel natural'),
     QuizModel(
-        headingText: 'Has girlfriend told you  that they like you?',
+        headingText: 'Has girlfriend told you that they like you?',
         options: ['Yes', 'I dont\'t think so', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'If you talk, who initiates conversation first?',
         options: ['They do', 'Always me', '50-50'],
-        correctAnswer: ''),
+        correctAnswer: '50-50'),
     QuizModel(
         headingText: 'Do you constantly check girlfriend’s social media?',
         options: ['Everyday', 'Occasionally', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'No'),
     QuizModel(
         headingText: 'Do you flirt with girlfriend when you are with them?',
         options: ['Yes all the time', 'Sometimes', 'Not at all'],
-        correctAnswer: ''),
+        correctAnswer: 'Not at all'),
     QuizModel(
-        headingText: 'How long does it take girlfriend to respond to  a text?',
+        headingText: 'How long does it take girlfriend to respond to a text?',
         options: [
           'They reply instantly',
           'A few hours',
           'we never text each other'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'They reply instantly'),
     QuizModel(
-        headingText: 'Are you two the  some age?',
+        headingText: 'Are you two the some age?',
         options: ['Yes', '2-3 years apart', 'Over 3 years apart'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
   ];
   static final List<QuizModel> quiz4 = [
     QuizModel(
         headingText: 'Does girlfriend know you exist?',
-        options: [' Yes, We’re friends', 'We’ve spoken a few times ', 'Nope'],
-        correctAnswer: ''),
+        options: ['Yes, We’re friends', 'We’ve spoken a few times ', 'Nope'],
+        correctAnswer: 'Yes, We’re friends'),
     QuizModel(
         headingText:
-            'Would you rather be with girlfriend right now  instead of doing this test?',
+            'Would you rather be with girlfriend right now instead of doing this test?',
         options: ['Definitely', 'I am not sure', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'I am not sure'),
     QuizModel(
         headingText:
             'Has girlfriend ever gone out of their way to help you with something?',
         options: ['Yes, lots of time', 'Occasionally', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, lots of time'),
     QuizModel(
         headingText:
-            'Do you get angery when you miss an opportunity to be with girlfriend?',
+            'Do you get angry when you miss an opportunity to be with girlfriend?',
         options: ['Yes', 'Sometimes', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'Do you argue with each other?',
         options: ['No', 'Occasionally', 'Yes, we argue quite a lot'],
-        correctAnswer: ''),
+        correctAnswer: 'Occasionally'),
     QuizModel(
         headingText: 'Do you think you like girlfriend?',
         options: ['Yes, I’m pretty sure', 'I’m not sure', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, I’m pretty sure'),
     QuizModel(
         headingText: 'Do you know what type of music girlfriend likes?',
         options: ['Yes', 'I think so', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'Have you ever touched girlfriend?',
         options: ['Yes', 'Kind of', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'How often does Girlfriend pop into your head?',
         options: ['All the time?', 'A couple of times a day', 'Hardly ever'],
-        correctAnswer: ''),
+        correctAnswer: 'A couple of times a day'),
     QuizModel(
-        headingText: 'Has girlfriend told you  that they like you?',
+        headingText: 'Has girlfriend told you that they like you?',
         options: ['Yes', 'No', 'I don\'t think so'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
   ];
   static final List<QuizModel> quiz5 = [
     QuizModel(
-        headingText: 'Does girlfriend make an  effort  to hang out with you?',
+        headingText: 'Does girlfriend make an effort to hang out with you?',
         options: ['Yes, All the time', 'Yes, but like a friend', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, All the time'),
     QuizModel(
         headingText: 'Have you ever caught girlfriend staring at you?',
         options: [
@@ -234,48 +239,48 @@ class QuizModel {
           'I don\'t think so',
           'No, I’m usually the one staring'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: ' Do you talk to girlfriend about personal things?',
         options: ['Yes', 'Not Really', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
-        headingText: 'Have you ever held  Girlfriend’s hand??',
+        headingText: 'Have you ever held Girlfriend’s hand??',
         options: [
           'Yes, It was very romantic',
           'yes, we’ve held hands as  part of a game',
           'No'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, It was very romantic'),
     QuizModel(
         headingText: 'Does Girlfriend lean in when you speak?',
         options: ['Yes', 'I am not sure', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
         headingText: 'Do you try to dress up to impress girlfriend?',
         options: ['Yes, all the time', 'Occasionally ', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes, all the time'),
     QuizModel(
         headingText:
-            'On a scale of 1 to 5 (5 being totally in love). how much do you like Girlfriend?',
+            'On a scale of 1 to 5 (5 being totally in love). How much do you like Girlfriend?',
         options: ['5', '3.4', '1.2'],
-        correctAnswer: ''),
+        correctAnswer: '5'),
     QuizModel(
         headingText: 'Have you ever touched girlfriend?',
         options: ['Yes', 'Occasionally', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
     QuizModel(
-        headingText: 'Is there anything you  would change about  girlfriend??',
+        headingText: 'Is there anything you would change about girlfriend??',
         options: [
           'Yes, lots og things!',
           'A few things',
           'No, I think they are perfect!'
         ],
-        correctAnswer: ''),
+        correctAnswer: 'No, I think they are perfect!'),
     QuizModel(
         headingText:
-            'If you asked Girlfriend to do something for you, do you think they would  do it?',
+            'If you asked Girlfriend to do something for you, do you think they would do it?',
         options: ['Yes', 'It depends', 'No'],
-        correctAnswer: ''),
+        correctAnswer: 'Yes'),
   ];
 }

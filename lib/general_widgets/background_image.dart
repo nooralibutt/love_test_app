@@ -10,7 +10,8 @@ class BackgroundImage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-            height: 900,
+            height: double.infinity,
+            width: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/bg_image.png'),

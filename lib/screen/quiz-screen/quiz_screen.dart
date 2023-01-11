@@ -1,10 +1,11 @@
-import 'package:love_test_app/chat_screen/love_chat_level_screen.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/model/quiz_model.dart';
+import 'package:love_test_app/screen/call_screen/call_screen.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/components/heading_text.dart';
+import 'package:love_test_app/screen/result_screen/result_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class QuizScreen extends StatelessWidget {
@@ -27,7 +28,8 @@ class QuizScreen extends StatelessWidget {
           dialogText: 'Do you want to leave the Love test?'),
       child: BackgroundImage(
         child: SingleChildScrollView(
-          child: Column(children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             HeadingText(
               headingText: QuizController.selectedQuiz[index].headingText,
             ),
@@ -43,7 +45,7 @@ class QuizScreen extends StatelessWidget {
   }
 }
 
-class _BuildButton extends StatelessWidget {
+class _BuildButton extends StatefulWidget {
   const _BuildButton({
     Key? key,
     required this.index,
@@ -54,6 +56,13 @@ class _BuildButton extends StatelessWidget {
   final String text;
 
   @override
+  State<_BuildButton> createState() => _BuildButtonState();
+}
+
+class _BuildButtonState extends State<_BuildButton> {
+  bool isCallScreenShowed = false;
+
+  @override
   Widget build(BuildContext context) {
     final questions = QuizModel.quiz1;
     return Padding(
@@ -61,9 +70,15 @@ class _BuildButton extends StatelessWidget {
       child: GeneralElevatedButton(
         buttonWidth: 250,
         fontColor: Colors.black,
-        text: text,
-        onPressed: () {
-          if (index >= questions.length - 1) {
+        text: widget.text,
+        onPressed: () async {
+          if (widget.index == 6 && ,,!isCallScreenShowed) {
+            isCallScreenShowed =
+                await (Navigator.pushNamed(context, CallScreen.routeName))
+                    as bool;
+            return;
+          }
+          if (widget.index >= questions.length - 1) {
             for (int i = 0; i < QuizController.correctAnswers.length - 1; i++) {
               if (QuizController.correctAnswers[i] == true) {
                 QuizController.resultValue = QuizController.resultValue + 1.0;
@@ -71,19 +86,22 @@ class _BuildButton extends StatelessWidget {
             }
             QuizController.resultValue =
                 QuizController.resultValue.roundToDouble() * 10;
-            Navigator.pushReplacementNamed(
-                context, LoveChatLevelScreen.routeName);
+            if (QuizController.isAnswered == true) {
+              QuizController.resultValue = QuizController.resultValue - 20.0;
+            }
+            Navigator.pushReplacementNamed(context, ResultScreen.routeName);
           } else {
-            if (questions[index].correctAnswer == text) {
+            if (QuizController.selectedQuiz[widget.index].correctAnswer ==
+                widget.text) {
               QuizController.correctAnswers.add(true);
             } else {
               QuizController.correctAnswers.add(false);
             }
             Navigator.pushReplacementNamed(context, QuizScreen.routeName,
-                arguments: index + 1);
+                arguments: widget.index + 1);
           }
         },
-        fontSize: 90.sp,
+        fontSize: 80.sp,
         backgroundColor: Colors.white,
         internalPadding: const EdgeInsets.all(20),
       ),

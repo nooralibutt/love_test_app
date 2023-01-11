@@ -2,6 +2,7 @@ import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/model/quiz_model.dart';
+import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/quiz_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
@@ -12,21 +13,33 @@ class QuizListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackgroundImage(
-        child: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _buildButton(),
-      ),
-    ));
-  }
-
-  List<Widget> _buildButton() {
-    List<_BuildButton> list = [];
+    List<Widget> list = [];
     for (int i = 0; i < QuizModel.quizList.length; i++) {
       list.add(_BuildButton(i));
     }
-    return list;
+    list.insert(
+        0,
+        Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: BackButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+              },
+            ),
+          ),
+        ));
+
+    return BackgroundImage(
+        child: Center(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: list,
+        ),
+      ),
+    ));
   }
 }
 
@@ -38,7 +51,7 @@ class _BuildButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 250.w, vertical: 50.h),
+      padding: EdgeInsets.symmetric(horizontal: 250.w, vertical: 100.h),
       child: GeneralElevatedButton(
         buttonWidth: 250,
         fontColor: Colors.black,

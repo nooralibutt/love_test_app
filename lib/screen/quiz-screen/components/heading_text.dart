@@ -8,12 +8,11 @@ class HeadingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 300.h, horizontal: 100.w),
-      child: Center(
-        child: Text(
-          headingText,
-          style: TextStyle(fontSize: 150.sp),
-        ),
+      padding: EdgeInsets.symmetric(vertical: 250.h, horizontal: 100.w),
+      child: Text(
+        headingText,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 120.sp),
       ),
     );
   }
