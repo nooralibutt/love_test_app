@@ -1,9 +1,9 @@
 import 'package:love_test_app/utils/all_utilities.dart';
 
-class ChatAvatar extends StatelessWidget {
+class LoveChatAvatar extends StatelessWidget {
   final String imgSrc;
 
-  const ChatAvatar(
+  const LoveChatAvatar(
     this.imgSrc, {
     Key? key,
   }) : super(key: key);

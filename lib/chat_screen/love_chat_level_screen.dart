@@ -1,21 +1,21 @@
-import 'package:love_test_app/chat_screen/chat/chat_screen.dart';
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/chat_screen/chat/love_chat_screen.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 import 'package:love_test_app/utils/my_audio_player.dart';
 import 'package:love_test_app/utils/prefs.dart';
 import 'package:simple_animations/stateless_animation/mirror_animation.dart';
 import 'package:supercharged/supercharged.dart';
 
-class ChatLevelScreen extends StatefulWidget {
+class LoveChatLevelScreen extends StatefulWidget {
   static const String routeName = "/chatLevelScreen";
 
-  const ChatLevelScreen({super.key});
+  const LoveChatLevelScreen({super.key});
 
   @override
-  _ChatLevelScreenState createState() => _ChatLevelScreenState();
+  _LoveChatLevelScreenState createState() => _LoveChatLevelScreenState();
 }
 
-class _ChatLevelScreenState extends State<ChatLevelScreen> {
+class _LoveChatLevelScreenState extends State<LoveChatLevelScreen> {
   final levels = ChatLevel.allLevels();
 
   @override
@@ -164,7 +164,7 @@ class _ChatLevelScreenState extends State<ChatLevelScreen> {
 
     final level = levels[completedLevelCount];
     final isLevelCompleted = await Navigator.pushNamed(
-        context, ChatScreen.routeName,
+        context, LoveChatScreen.routeName,
         arguments: level);
     final isLevelCompleted2 = isLevelCompleted as bool?;
     if (isLevelCompleted2 == null) return;

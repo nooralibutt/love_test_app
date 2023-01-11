@@ -1,7 +1,7 @@
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
-import 'chat_avatar.dart';
+import 'love_chat_avatar.dart';
 
 class MessageWidget extends StatelessWidget {
   final bool isSender;
@@ -64,6 +64,6 @@ class MessageWidget extends StatelessWidget {
     );
   }
 
-  ChatAvatar _buildChatAvatar() =>
-      ChatAvatar(isSender ? level.botImg : level.userImg);
+  LoveChatAvatar _buildChatAvatar() =>
+      LoveChatAvatar(isSender ? level.botImg : level.userImg);
 }

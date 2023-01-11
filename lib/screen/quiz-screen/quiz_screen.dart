@@ -1,4 +1,4 @@
-import 'package:love_test_app/chat_screen/chat_level_screen.dart';
+import 'package:love_test_app/chat_screen/love_chat_level_screen.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -71,7 +71,8 @@ class _BuildButton extends StatelessWidget {
             }
             QuizController.resultValue =
                 QuizController.resultValue.roundToDouble() * 10;
-            Navigator.pushReplacementNamed(context, ChatLevelScreen.routeName);
+            Navigator.pushReplacementNamed(
+                context, LoveChatLevelScreen.routeName);
           } else {
             if (questions[index].correctAnswer == text) {
               QuizController.correctAnswers.add(true);

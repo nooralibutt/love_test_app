@@ -1,16 +1,17 @@
 import 'package:love_test_app/utils/all_utilities.dart';
 import 'package:love_test_app/utils/my_audio_player.dart';
 
-import 'chat_avatar.dart';
+import 'love_chat_avatar.dart';
 
-class ChatHeaderWidget extends StatelessWidget implements PreferredSizeWidget {
+class LoveChatHeaderWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
   final String title;
   final String imgSrc;
 
-  ChatHeaderWidget(
+  LoveChatHeaderWidget(
     this.title,
     this.imgSrc, {
     Key? key,
@@ -27,7 +28,7 @@ class ChatHeaderWidget extends StatelessWidget implements PreferredSizeWidget {
       elevation: 5,
       title: Row(
         children: [
-          ChatAvatar(imgSrc),
+          LoveChatAvatar(imgSrc),
           //  HorizontalSpacing(of: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

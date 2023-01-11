@@ -1,4 +1,4 @@
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 import 'package:love_test_app/utils/size_config.dart';
 

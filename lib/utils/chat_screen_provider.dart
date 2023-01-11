@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:love_test_app/general_widgets/level_complete_dialog.dart';
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/my_audio_player.dart';
 import 'package:love_test_app/utils/prefs.dart';
 import 'package:supercharged/supercharged.dart';

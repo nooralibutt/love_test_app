@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
-import 'components/chat_app_bar.dart';
-import 'components/chat_list_widget.dart';
 import 'components/chat_options_panel.dart';
 import 'components/level_title_panel.dart';
+import 'components/love_chat_app_bar.dart';
+import 'components/love_chat_list_widget.dart';
 import 'components/typing_panel.dart';
 
-class ChatScreen extends StatelessWidget {
+class LoveChatScreen extends StatelessWidget {
   static const String routeName = "/chatScreen";
 
-  const ChatScreen({super.key});
+  const LoveChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ChatScreen extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as ChatLevel;
 
     return Scaffold(
-      appBar: ChatHeaderWidget(level.botName, level.botImg),
+      appBar: LoveChatHeaderWidget(level.botName, level.botImg),
       body: ListenableProvider(
         create: (context) => ChatScreenProvider(level),
         builder: (context, Widget? child) => _buildBody(context, level),
@@ -33,7 +33,7 @@ class ChatScreen extends StatelessWidget {
       children: [
         Column(
           children: [
-            ChatListWidget(level),
+            Expanded(child: LoveChatListWidget(level)),
             TypingPanel(),
             ChatOptionsPanel(),
           ],

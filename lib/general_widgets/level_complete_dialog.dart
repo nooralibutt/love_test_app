@@ -72,8 +72,8 @@ class LevelEndDialog extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
-                  .headline2!
-                  .copyWith(color: Colors.white),
+                  .headline2
+                  ?.copyWith(color: Colors.white),
             ),
           ),
           _buildBottomButton(),
@@ -143,7 +143,6 @@ class LevelEndDialog extends StatelessWidget {
     }
 
     Dialog dialog = Dialog(
-      shape: null,
       child: LevelEndDialog(isSuccessful),
     );
     return showDialog(

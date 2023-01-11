@@ -1,14 +1,14 @@
 import 'package:flutter/scheduler.dart';
-import 'package:love_test_app/model/chat_level_model.dart';
+import 'package:love_test_app/model/love_chat_level_model.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 import 'message_widget.dart';
 
-class ChatListWidget extends StatelessWidget {
+class LoveChatListWidget extends StatelessWidget {
   final ChatLevel level;
   final bool willSenderInitiateChat;
 
-  ChatListWidget(this.level)
+  LoveChatListWidget(this.level)
       : willSenderInitiateChat = level.willSenderInitiateChat;
 
   bool _isSender(int index) {
