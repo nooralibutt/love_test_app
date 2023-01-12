@@ -69,7 +69,7 @@ class _CallScreenState extends State<CallScreen> {
                         context: context,
                         builder: (context) => AlertDialog(
                               title: const Text(
-                                  'Congrats, You end a call of stranger girl showing that you love her'),
+                                  'Congrats, You end a call of stranger girl showing that your love is true with your girlfriend'),
                               actions: [
                                 Padding(
                                   padding:
