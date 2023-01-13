@@ -1,3 +1,4 @@
+import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -32,6 +33,8 @@ class QuizListScreen extends StatelessWidget {
             ),
           ),
         ));
+
+    list.insert(6, const EasyBannerAd());
 
     list.insert(
         1,

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -39,6 +40,7 @@ class QuizScreen extends StatelessWidget {
             ),
             ...buildButton(QuizController.selectedQuiz[index].options, index),
             SizedBox(height: 70.h),
+            const EasyBannerAd(),
             Text('${index + 1}/10',
                 style:
                     TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold)),
@@ -92,7 +94,7 @@ class _BuildButtonState extends State<_BuildButton> {
             QuizController.resultValue =
                 QuizController.resultValue.roundToDouble() / 10;
             if (QuizController.isAnswered == true) {
-              QuizController.resultValue = QuizController.resultValue - 20.0;
+              QuizController.resultValue = QuizController.resultValue - 0.2;
             }
             if (QuizController.resultValue <= 0) {
               QuizController.resultValue = 0;

@@ -15,6 +15,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double loveResult = QuizController.resultValue * 100;
     return WillPopScope(
       onWillPop: () => QuizController.showExitPopUp(
           context: context,
@@ -41,14 +42,13 @@ class ResultScreen extends StatelessWidget {
                         fit: BoxFit.cover)),
                 child: LiquidLinearProgressIndicator(
                   value: QuizController.resultValue,
-                  valueColor: AlwaysStoppedAnimation(Colors.red),
+                  valueColor: const AlwaysStoppedAnimation(Colors.red),
                   backgroundColor: Colors.transparent,
                   borderColor: Colors.transparent,
                   borderWidth: QuizController.resultValue,
                   direction: Axis.vertical,
                   // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                  center: Text(
-                      ('${QuizController.resultValue.round() * 100} % '),
+                  center: Text(('${loveResult.round()} % '),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 190.sp,
