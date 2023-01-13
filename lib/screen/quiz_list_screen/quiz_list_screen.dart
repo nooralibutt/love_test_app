@@ -25,6 +25,8 @@ class QuizListScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: BackButton(
               onPressed: () {
+                QuizController.herName = '';
+                QuizController.hisName = '';
                 Navigator.pushReplacementNamed(context, HomeScreen.routeName);
               },
             ),

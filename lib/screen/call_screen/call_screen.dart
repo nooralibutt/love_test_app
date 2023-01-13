@@ -63,13 +63,14 @@ class _CallScreenState extends State<CallScreen> {
                   icon: Icons.call_end,
                   bgColor: Colors.red,
                   onPressed: () {
-                    Navigator.pop(context, true);
+                    Navigator.pop(context);
+
                     QuizController.isAnswered = false;
                     showDialog<bool>(
                         context: context,
                         builder: (context) => AlertDialog(
                               title: const Text(
-                                  'Congrats, You end a call of stranger girl showing that your love is true with your girlfriend'),
+                                  'Congrats, You end a call of stranger showing that your love is true with your partner'),
                               actions: [
                                 Padding(
                                   padding:
@@ -90,13 +91,13 @@ class _CallScreenState extends State<CallScreen> {
                     icon: Icons.call,
                     bgColor: Colors.green,
                     onPressed: () {
-                      Navigator.pop(context, true);
+                      Navigator.pop(context);
                       QuizController.isAnswered = true;
                       showDialog<bool>(
                           context: context,
                           builder: (context) => AlertDialog(
                                 title: const Text(
-                                    'You are a cheater, you picked up stranger girl phone'),
+                                    'You are a cheater, you picked up stranger phone'),
                                 actions: [
                                   Padding(
                                     padding:

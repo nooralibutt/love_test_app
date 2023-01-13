@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -76,7 +78,9 @@ class _BuildButtonState extends State<_BuildButton> {
         onPressed: () {
           if (widget.index == 6 && !isCallScreenShowed) {
             isCallScreenShowed = true;
-            Navigator.pushNamed(context, CallScreen.routeName);
+            Timer(Duration(milliseconds: 500), () {
+              Navigator.pushNamed(context, CallScreen.routeName);
+            });
             return;
           }
           if (widget.index >= questions.length - 1) {
@@ -89,6 +93,9 @@ class _BuildButtonState extends State<_BuildButton> {
                 QuizController.resultValue.roundToDouble() / 10;
             if (QuizController.isAnswered == true) {
               QuizController.resultValue = QuizController.resultValue - 20.0;
+            }
+            if (QuizController.resultValue <= 0) {
+              QuizController.resultValue = 0;
             }
             Navigator.pushReplacementNamed(context, ResultScreen.routeName);
           } else {

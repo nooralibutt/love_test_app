@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
 import 'package:love_test_app/general_widgets/general_elevated_button.dart';
@@ -44,14 +45,19 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
               MyTextField(
-                hintText: 'His/Her name',
+                hintText: 'Enter partner\'s name',
                 onChanged: (value) {
                   QuizController.herName = value;
                 },
               ),
+              MyTextField(
+                hintText: 'Age of Relationship',
+                onChanged: (value) {},
+              ),
+              const EasyBannerAd(),
               Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 110, vertical: 60),
+                      EdgeInsets.symmetric(horizontal: 110, vertical: 130.h),
                   child: GeneralElevatedButton(
                     buttonWidth: 200,
                     text: 'Start Test',

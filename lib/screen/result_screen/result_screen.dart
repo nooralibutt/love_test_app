@@ -26,61 +26,67 @@ class ResultScreen extends StatelessWidget {
       child: BackgroundImage(
           child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 180.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 150,
-              width: 200,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/bg_image.png'),
-                      fit: BoxFit.cover)),
-              child: LiquidLinearProgressIndicator(
-                value: QuizController.resultValue,
-                valueColor: AlwaysStoppedAnimation(Colors.red),
-                backgroundColor: Colors.transparent,
-                borderColor: Colors.transparent,
-                borderWidth: QuizController.resultValue,
-                direction: Axis.vertical,
-                // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                center: Text(
-                    'Love Percentage' +
-                        '  =  ' +
-                        ('${QuizController.resultValue}'),
-                    style:
-                        const TextStyle(color: Colors.white)), //text inside it
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 500.h),
+              Container(
+                height: 150,
+                width: 200,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/bg_image.png'),
+                        fit: BoxFit.cover)),
+                child: LiquidLinearProgressIndicator(
+                  value: QuizController.resultValue,
+                  valueColor: AlwaysStoppedAnimation(Colors.red),
+                  backgroundColor: Colors.transparent,
+                  borderColor: Colors.transparent,
+                  borderWidth: QuizController.resultValue,
+                  direction: Axis.vertical,
+                  // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+                  center: Text(
+                      ('${QuizController.resultValue.round() * 100} % '),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 190.sp,
+                          fontWeight: FontWeight.bold)), //text inside it
+                ),
               ),
-            ),
-            SizedBox(height: 190.h),
-            GeneralElevatedButton(
-                onPressed: () {
-                  QuizController.herName = '';
-                  QuizController.hisName = '';
-                  Navigator.pushReplacementNamed(
-                      context, QuizListScreen.routeName);
-                },
-                fontSize: 120.sp,
-                backgroundColor: const Color(0xff00c6c6),
-                fontColor: Colors.white,
-                text: 'Take Next Quiz',
-                internalPadding: const EdgeInsets.all(25),
-                buttonWidth: 20.w),
-            SizedBox(height: 190.h),
-            GeneralElevatedButton(
-                onPressed: () {
-                  QuizController.resultValue = 0;
-                  QuizController.correctAnswers.clear();
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-                },
-                fontSize: 120.sp,
-                backgroundColor: const Color(0xff00d300),
-                fontColor: Colors.white,
-                text: 'Home Screen',
-                internalPadding: const EdgeInsets.all(25),
-                buttonWidth: 20.w),
-          ],
+              SizedBox(height: 190.h),
+              GeneralElevatedButton(
+                  onPressed: () {
+                    QuizController.herName = '';
+                    QuizController.hisName = '';
+                    Navigator.pushReplacementNamed(
+                        context, QuizListScreen.routeName);
+                  },
+                  fontSize: 120.sp,
+                  backgroundColor: const Color(0xff00c6c6),
+                  fontColor: Colors.white,
+                  text: 'Take Next Quiz',
+                  internalPadding: const EdgeInsets.all(25),
+                  buttonWidth: 20.w),
+              SizedBox(height: 190.h),
+              GeneralElevatedButton(
+                  onPressed: () {
+                    QuizController.resultValue = 0;
+                    QuizController.correctAnswers.clear();
+                    QuizController.hisName = '';
+                    QuizController.herName = '';
+                    Navigator.pushReplacementNamed(
+                        context, HomeScreen.routeName);
+                  },
+                  fontSize: 120.sp,
+                  backgroundColor: const Color(0xff00d300),
+                  fontColor: Colors.white,
+                  text: 'Home Screen',
+                  internalPadding: const EdgeInsets.all(25),
+                  buttonWidth: 20.w),
+            ],
+          ),
         ),
       )),
     );
