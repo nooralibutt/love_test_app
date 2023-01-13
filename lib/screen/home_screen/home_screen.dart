@@ -38,6 +38,7 @@ class HomeScreen extends StatelessWidget {
                       )),
                 ),
               ),
+              const EasyBannerAd(),
               MyTextField(
                 hintText: 'Enter your name',
                 onChanged: (value) {
@@ -54,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                 hintText: 'Age of Relationship',
                 onChanged: (value) {},
               ),
-              const EasyBannerAd(),
               Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 110, vertical: 130.h),

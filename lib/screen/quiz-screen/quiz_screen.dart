@@ -9,6 +9,7 @@ import 'package:love_test_app/screen/call_screen/call_screen.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/components/heading_text.dart';
 import 'package:love_test_app/screen/result_screen/result_screen.dart';
+import 'package:love_test_app/services/ad_manager.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class QuizScreen extends StatelessWidget {
@@ -38,9 +39,9 @@ class QuizScreen extends StatelessWidget {
             HeadingText(
               headingText: QuizController.selectedQuiz[index].headingText,
             ),
+            const EasyBannerAd(),
             ...buildButton(QuizController.selectedQuiz[index].options, index),
             SizedBox(height: 70.h),
-            const EasyBannerAd(),
             Text('${index + 1}/10',
                 style:
                     TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold)),
@@ -80,7 +81,7 @@ class _BuildButtonState extends State<_BuildButton> {
         onPressed: () {
           if (widget.index == 6 && !isCallScreenShowed) {
             isCallScreenShowed = true;
-            Timer(Duration(milliseconds: 500), () {
+            Timer(const Duration(milliseconds: 500), () {
               Navigator.pushNamed(context, CallScreen.routeName);
             });
             return;
@@ -99,6 +100,7 @@ class _BuildButtonState extends State<_BuildButton> {
             if (QuizController.resultValue <= 0) {
               QuizController.resultValue = 0;
             }
+            AdManager.instance.showPriorityInterstitial();
             Navigator.pushReplacementNamed(context, ResultScreen.routeName);
           } else {
             if (QuizController.selectedQuiz[widget.index].correctAnswer ==
