@@ -31,10 +31,10 @@ class QuizModel {
         options: ['All the time', 'No', 'Occasionally'],
         correctAnswer: 'All the time'),
     QuizModel(
-        headingText: 'why are you taking this quiz',
+        headingText: 'why are you taking this quiz?',
         options: [
-          'I am obsessed with my girlfriend',
-          'I think girlfriend like me',
+          'I am obsessed with my partner',
+          'I think my partner likes me',
           'Because I am bored'
         ],
         correctAnswer: 'I think your partner likes  you'),
@@ -54,7 +54,7 @@ class QuizModel {
         correctAnswer: 'Everything'),
     QuizModel(
         headingText: 'Does your partner have your phone number?',
-        options: ['Yeah, my partner asked me for it', 'Yes, I gave him', 'No'],
+        options: ['Yeah, my partner asked me for it', 'Yes, I gave them', 'No'],
         correctAnswer: 'Yeah, my partner asked me for it'),
     QuizModel(
         headingText: 'How many interests do you share with your partner?',
@@ -81,7 +81,7 @@ class QuizModel {
         ],
         correctAnswer: 'Everyday, even weekends'),
     QuizModel(
-        headingText: 'Does your partner ever give  your compliments? ',
+        headingText: 'Does your partner ever give  your compliments?',
         options: ['Yes, All of the time! ', 'Occasionally ', 'No'],
         correctAnswer: 'Occasionally'),
     QuizModel(
@@ -245,7 +245,7 @@ class QuizModel {
         options: ['Yes', 'Not Really', 'No'],
         correctAnswer: 'Yes'),
     QuizModel(
-        headingText: 'Have you ever held your partner\’s hand??',
+        headingText: 'Have you ever held your partner\’s hand?',
         options: [
           'Yes, It was very romantic',
           'yes, we’ve held hands as  part of a game',
@@ -270,7 +270,7 @@ class QuizModel {
         options: ['Yes', 'Occasionally', 'No'],
         correctAnswer: 'Yes'),
     QuizModel(
-        headingText: 'Is there anything you would change about your partner??',
+        headingText: 'Is there anything you would change about your partner?',
         options: [
           'Yes, lots og things!',
           'A few things',

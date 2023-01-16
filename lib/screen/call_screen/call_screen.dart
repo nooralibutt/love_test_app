@@ -1,6 +1,5 @@
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/screen/call_screen/components/accept_call_button.dart';
-import 'package:love_test_app/screen/call_screen/components/icon_card.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 import 'package:love_test_app/utils/call_vibrator.dart';
 import 'package:love_test_app/utils/my_audio_player.dart';
@@ -45,16 +44,7 @@ class _CallScreenState extends State<CallScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 40.sp))),
             SizedBox(height: 90.h),
             Icon(Icons.person, color: Colors.white, size: 500.h),
-            SizedBox(height: 1000.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const IconCard(
-                    title: 'Remind Me', icon: Icons.remember_me_rounded),
-                SizedBox(width: 200.w),
-                const IconCard(title: 'Message', icon: Icons.message),
-              ],
-            ),
+            SizedBox(height: 1200.h),
             SizedBox(height: 100.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,55 +52,18 @@ class _CallScreenState extends State<CallScreen> {
                 AcceptCallButton(
                   icon: Icons.call_end,
                   bgColor: Colors.red,
-                  onPressed: () {
-                    Navigator.pop(context);
-
+                  onPressed: () async {
                     QuizController.isAnswered = false;
-                    showDialog<bool>(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              title: const Text(
-                                  'Congrats, You end a call of stranger showing that your love is true with your partner'),
-                              actions: [
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20.w),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text('Next'),
-                                  ),
-                                )
-                              ],
-                            ));
+                    Navigator.pop(context);
                   },
                 ),
                 SizedBox(width: 200.w),
                 AcceptCallButton(
                     icon: Icons.call,
                     bgColor: Colors.green,
-                    onPressed: () {
-                      Navigator.pop(context);
+                    onPressed: () async {
                       QuizController.isAnswered = true;
-                      showDialog<bool>(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                title: const Text(
-                                    'You are a cheater, you picked up stranger phone'),
-                                actions: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 20.w),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text('Next'),
-                                    ),
-                                  )
-                                ],
-                              ));
+                      Navigator.pop(context);
                     }),
               ],
             )

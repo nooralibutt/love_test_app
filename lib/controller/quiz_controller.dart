@@ -17,8 +17,8 @@ class QuizController {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            content: Container(
-              height: 340.h,
+            content: SizedBox(
+              height: 570.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

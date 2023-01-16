@@ -78,13 +78,11 @@ class _BuildButtonState extends State<_BuildButton> {
         buttonWidth: 250,
         fontColor: Colors.black,
         text: widget.text,
-        onPressed: () {
+        onPressed: () async {
           if (widget.index == 6 && !isCallScreenShowed) {
             isCallScreenShowed = true;
-            Timer(const Duration(milliseconds: 500), () {
-              Navigator.pushNamed(context, CallScreen.routeName);
-            });
-            return;
+            await Future.delayed(const Duration(milliseconds: 500));
+            await Navigator.pushNamed(context, CallScreen.routeName);
           }
           if (widget.index >= questions.length - 1) {
             for (int i = 0; i < QuizController.correctAnswers.length - 1; i++) {
@@ -95,10 +93,12 @@ class _BuildButtonState extends State<_BuildButton> {
             QuizController.resultValue =
                 QuizController.resultValue.roundToDouble() / 10;
             if (QuizController.isAnswered == true) {
-              QuizController.resultValue = QuizController.resultValue - 0.2;
+              QuizController.resultValue = QuizController.resultValue - 0.4;
             }
             if (QuizController.resultValue <= 0) {
               QuizController.resultValue = 0;
+            } else if (QuizController.resultValue > 100) {
+              QuizController.resultValue = QuizController.resultValue = 100;
             }
             AdManager.instance.showPriorityInterstitial();
             Navigator.pushReplacementNamed(context, ResultScreen.routeName);

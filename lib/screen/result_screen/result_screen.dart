@@ -32,7 +32,14 @@ class ResultScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 500.h),
+              SizedBox(height: 300.h),
+              Text('Love Test Results',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 120.sp)),
+              SizedBox(height: 120.h),
               Container(
                 height: 150,
                 width: 200,
@@ -48,13 +55,37 @@ class ResultScreen extends StatelessWidget {
                   borderWidth: QuizController.resultValue,
                   direction: Axis.vertical,
                   // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-                  center: Text(('${loveResult.round()} % '),
+                  center: Text(('${loveResult.round()} % \n Love'),
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 190.sp,
                           fontWeight: FontWeight.bold)), //text inside it
                 ),
               ),
+              SizedBox(height: 220.h),
+              Text('Comments',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 120.sp)),
+              SizedBox(height: 40.h),
+              QuizController.isAnswered
+                  ? const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                          'You are a cheater, you picked a call of stranger',
+                          textAlign: TextAlign.center,
+                          style: TextStyle()),
+                    )
+                  : const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                          'You decline a stranger\'s call shows that you love with your partner',
+                          textAlign: TextAlign.center,
+                          style: TextStyle()),
+                    ),
               SizedBox(height: 190.h),
               GeneralElevatedButton(
                   onPressed: () {
@@ -85,6 +116,7 @@ class ResultScreen extends StatelessWidget {
                   text: 'Home Screen',
                   internalPadding: const EdgeInsets.all(25),
                   buttonWidth: 20.w),
+              SizedBox(height: 190.h),
             ],
           ),
         ),
