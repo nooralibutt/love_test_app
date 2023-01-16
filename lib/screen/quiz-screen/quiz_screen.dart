@@ -19,23 +19,27 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final index = ModalRoute.of(context)?.settings.arguments as int? ?? 0;
+    final index = ModalRoute
+        .of(context)
+        ?.settings
+        .arguments as int? ?? 0;
     return WillPopScope(
-      onWillPop: () => QuizController.showExitPopUp(
-          context: context,
-          onPressedExit: () {
-            QuizController.correctAnswers.clear();
-            QuizController.resultValue = 0;
-            QuizController.herName = '';
-            QuizController.hisName = '';
-            Navigator.pop(context);
-            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
-          },
-          dialogText: 'Do you want to leave the Love test?'),
+      onWillPop: () =>
+          QuizController.showExitPopUp(
+              context: context,
+              onPressedExit: () {
+                QuizController.correctAnswers.clear();
+                QuizController.resultValue = 0;
+                QuizController.herName = '';
+                QuizController.hisName = '';
+                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+              },
+              dialogText: 'Do you want to leave the Love test?'),
       child: BackgroundImage(
         child: SingleChildScrollView(
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             HeadingText(
               headingText: QuizController.selectedQuiz[index].headingText,
             ),
@@ -44,7 +48,7 @@ class QuizScreen extends StatelessWidget {
             SizedBox(height: 70.h),
             Text('${index + 1}/10',
                 style:
-                    TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold)),
+                TextStyle(fontSize: 130.sp, fontWeight: FontWeight.bold)),
           ]),
         ),
       ),
@@ -90,10 +94,12 @@ class _BuildButtonState extends State<_BuildButton> {
             }
             if (QuizController.isAnswered == true) {
               QuizController.resultValue = QuizController.resultValue - 0.4;
-            } else if (QuizController.resultValue < 0) {
+            }
+            if (QuizController.resultValue < 0.0) {
               QuizController.resultValue = 0;
-            } else if (QuizController.resultValue > 100) {
-              QuizController.resultValue = QuizController.resultValue = 100;
+            }
+            if (QuizController.resultValue > 100) {
+              QuizController.resultValue = 100;
             }
             AdManager.instance.showPriorityInterstitial();
             Navigator.pushReplacementNamed(context, ResultScreen.routeName);
