@@ -8,16 +8,17 @@ class GeneralElevatedButton extends StatelessWidget {
   final Color fontColor;
   final EdgeInsets internalPadding;
   final double buttonWidth;
+  final bool isLock;
 
-  const GeneralElevatedButton(
-      {Key? key,
-      required this.onPressed,
-      required this.fontSize,
-      required this.backgroundColor,
-      required this.fontColor,
-      required this.text,
-      required this.internalPadding,
-      required this.buttonWidth})
+  const GeneralElevatedButton({Key? key,
+    required this.onPressed,
+    required this.fontSize,
+    required this.backgroundColor,
+    required this.fontColor,
+    required this.text,
+    required this.internalPadding,
+    required this.buttonWidth,
+    required this.isLock})
       : super(key: key);
 
   @override
@@ -25,20 +26,23 @@ class GeneralElevatedButton extends StatelessWidget {
     return SizedBox(
         width: buttonWidth,
         child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                elevation: 20,
-                padding: internalPadding,
-                backgroundColor: backgroundColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10))),
-            onPressed: onPressed,
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: fontSize,
-                  color: fontColor,
-                  fontWeight: FontWeight.normal),
-            )));
+          style: ElevatedButton.styleFrom(
+              elevation: 20,
+              padding: internalPadding,
+              backgroundColor: backgroundColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10))),
+          onPressed: onPressed,
+          child:
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: fontSize,
+                color: fontColor,
+                fontWeight: FontWeight.normal),
+          ),
+
+        ));
   }
 }

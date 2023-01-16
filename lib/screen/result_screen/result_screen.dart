@@ -88,9 +88,10 @@ class ResultScreen extends StatelessWidget {
                     ),
               SizedBox(height: 190.h),
               GeneralElevatedButton(
+                  isLock: false,
                   onPressed: () {
-                    QuizController.herName = '';
-                    QuizController.hisName = '';
+                    QuizController.resultValue = 0;
+                    QuizController.correctAnswers.clear();
                     Navigator.pushReplacementNamed(
                         context, QuizListScreen.routeName);
                   },
@@ -102,6 +103,7 @@ class ResultScreen extends StatelessWidget {
                   buttonWidth: 20.w),
               SizedBox(height: 190.h),
               GeneralElevatedButton(
+                  isLock: false,
                   onPressed: () {
                     QuizController.resultValue = 0;
                     QuizController.correctAnswers.clear();

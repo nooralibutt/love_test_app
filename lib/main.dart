@@ -1,11 +1,13 @@
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/services/ad_manager.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
+import 'package:love_test_app/utils/prefs.dart';
 import 'package:love_test_app/utils/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AdManager.instance.initialize();
+  await Prefs.instance.init();
   runApp(const MyApp());
 }
 

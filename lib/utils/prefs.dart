@@ -15,6 +15,7 @@ class Prefs {
 
   static const KEY_SCORE = "SCORE";
   static const KEY_LEVEL_COMPLETED_COUNT = "LEVEL_COMPLETED_COUNT";
+  static const KEY_QUIZ_COMPLETED_COUNT = "QUIZ_COMPLETED_hCOUNT";
   static const KEY_INTERMEDIATE_LEVEL_COMPLETED_COUNT =
       "INTERMEDIATE_LEVEL_COMPLETED_COUNT";
   static const KEY_SHOW_GAME_SCREEN_TOUR_GUIDE = "SHOW_GAME_SCREEN_TOUR_GUIDE";
@@ -36,6 +37,11 @@ class Prefs {
 
   Future<bool>? incrementCompletedLevelCount() =>
       _prefs?.setInt(KEY_LEVEL_COMPLETED_COUNT, getCompletedLevelCount() + 1);
+
+  void incrementCompletedQuizLevelCount() =>
+      _prefs?.setInt(KEY_QUIZ_COMPLETED_COUNT, getCompletedQuizCount() + 1);
+
+  int getCompletedQuizCount() => _prefs?.getInt(KEY_QUIZ_COMPLETED_COUNT) ?? 0;
 
   int getCompletedLevelCount() =>
       _prefs?.getInt(KEY_LEVEL_COMPLETED_COUNT) ?? 0;

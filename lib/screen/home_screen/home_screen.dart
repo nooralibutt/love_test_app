@@ -59,7 +59,8 @@ class HomeScreen extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 110, vertical: 130.h),
                   child: GeneralElevatedButton(
-                    buttonWidth: 200,
+                    isLock: false,
+                    buttonWidth: 300,
                     text: 'Start Test',
                     fontColor: Colors.black,
                     internalPadding: const EdgeInsets.all(12),

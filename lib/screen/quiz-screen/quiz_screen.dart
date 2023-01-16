@@ -67,35 +67,30 @@ class _BuildButton extends StatefulWidget {
 }
 
 class _BuildButtonState extends State<_BuildButton> {
-  bool isCallScreenShowed = false;
-
   @override
   Widget build(BuildContext context) {
     final questions = QuizModel.quiz1;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 80.h),
       child: GeneralElevatedButton(
+        isLock: false,
         buttonWidth: 250,
         fontColor: Colors.black,
         text: widget.text,
         onPressed: () async {
-          if (widget.index == 6 && !isCallScreenShowed) {
-            isCallScreenShowed = true;
+          if (widget.index == 6) {
             await Future.delayed(const Duration(milliseconds: 500));
             await Navigator.pushNamed(context, CallScreen.routeName);
           }
           if (widget.index >= questions.length - 1) {
             for (int i = 0; i < QuizController.correctAnswers.length - 1; i++) {
               if (QuizController.correctAnswers[i] == true) {
-                QuizController.resultValue = QuizController.resultValue + 1.0;
+                QuizController.resultValue = QuizController.resultValue + 0.1;
               }
             }
-            QuizController.resultValue =
-                QuizController.resultValue.roundToDouble() / 10;
             if (QuizController.isAnswered == true) {
               QuizController.resultValue = QuizController.resultValue - 0.4;
-            }
-            if (QuizController.resultValue <= 0) {
+            } else if (QuizController.resultValue < 0) {
               QuizController.resultValue = 0;
             } else if (QuizController.resultValue > 100) {
               QuizController.resultValue = QuizController.resultValue = 100;

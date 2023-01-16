@@ -1,11 +1,12 @@
 import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:love_test_app/controller/quiz_controller.dart';
 import 'package:love_test_app/general_widgets/background_image.dart';
-import 'package:love_test_app/general_widgets/general_elevated_button.dart';
 import 'package:love_test_app/model/quiz_model.dart';
 import 'package:love_test_app/screen/home_screen/home_screen.dart';
 import 'package:love_test_app/screen/quiz-screen/quiz_screen.dart';
+import 'package:love_test_app/services/ad_manager.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
+import 'package:love_test_app/utils/prefs.dart';
 
 class QuizListScreen extends StatelessWidget {
   static const String routeName = 'quiz_list_screen';
@@ -59,27 +60,71 @@ class QuizListScreen extends StatelessWidget {
   }
 }
 
-class _BuildButton extends StatelessWidget {
+class _BuildButton extends StatefulWidget {
   const _BuildButton(this.index, {Key? key}) : super(key: key);
-
   final int index;
 
   @override
+  State<_BuildButton> createState() => _BuildButtonState();
+}
+
+class _BuildButtonState extends State<_BuildButton> {
+  bool? isWatched = false;
+
+  @override
   Widget build(BuildContext context) {
+    final completedLevelCount = Prefs.instance.getCompletedQuizCount();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 250.w, vertical: 100.h),
-      child: GeneralElevatedButton(
-        buttonWidth: 250,
-        fontColor: Colors.black,
-        text: 'Quiz ${index + 1}',
-        onPressed: () {
-          QuizController.selectedQuiz = QuizModel.quizList[index];
-          Navigator.pushReplacementNamed(context, QuizScreen.routeName);
-        },
-        fontSize: 90.sp,
-        backgroundColor: Colors.white,
-        internalPadding: const EdgeInsets.all(20),
-      ),
+      child: SizedBox(
+          width: 250,
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  elevation: 20,
+                  padding: const EdgeInsets.all(20),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10))),
+              onPressed: () async {
+                if (widget.index <= completedLevelCount) {
+                  QuizController.resultValue = 0;
+                  QuizController.selectedQuiz =
+                      QuizModel.quizList[widget.index];
+                  Navigator.pushReplacementNamed(context, QuizScreen.routeName);
+                } else {
+                  QuizController.resultValue = 0;
+                  AdManager.instance.showRewardedAds(
+                      context: context,
+                      onRewardedClosed: () {
+                        Prefs.instance.incrementCompletedQuizLevelCount();
+                        print(Prefs.instance.getCompletedQuizCount());
+                        QuizController.selectedQuiz =
+                            QuizModel.quizList[widget.index];
+                        Navigator.pushReplacementNamed(
+                            context, QuizScreen.routeName);
+                      });
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Quiz ${widget.index + 1}',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 90.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal),
+                  ),
+                  SizedBox(width: 100.w),
+                  (widget.index <= completedLevelCount)
+                      ? const SizedBox()
+                      : const Icon(
+                          Icons.lock,
+                          color: Colors.red,
+                        ),
+                ],
+              ))),
     );
   }
 }

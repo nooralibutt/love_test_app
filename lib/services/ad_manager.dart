@@ -4,6 +4,7 @@ import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:love_test_app/model/ad_setting.dart';
 import 'package:love_test_app/services/ad_id_manager.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
+import 'package:love_test_app/utils/constants.dart';
 
 class AdManager {
   static const IAdIdManager adIdManager = AdIdManager();
@@ -128,5 +129,29 @@ class AdManager {
     } else {
       onInterstitialClosed?.call();
     }
+  }
+
+  bool showRewardedAds(
+      {Function? onRewardedClosed, required BuildContext context}) {
+    bool isAdShowed = false;
+    showRewardedAdAlertDialog(context,
+        title: 'Rewarded Video Ad',
+        content: 'Watch Video ad to Unlock Quiz', onWatchAd: () {
+      if (EasyAds.instance.showAd(AdUnitType.interstitial)) {
+        _streamSubscription?.cancel();
+        _streamSubscription = EasyAds.instance.onEvent.listen((event) {
+          if (event.adUnitType == AdUnitType.interstitial &&
+              event.type == AdEventType.adDismissed) {
+            _streamSubscription?.cancel();
+            onRewardedClosed?.call();
+          }
+        });
+
+        isAdShowed = true;
+      } else {
+        onRewardedClosed?.call();
+      }
+    });
+    return isAdShowed;
   }
 }
