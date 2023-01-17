@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_ads_flutter/easy_ads_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -59,6 +60,22 @@ class AdSetting {
       .map<AdPriority>(
           (e) => adPriorityStringToEnumMap[e.toString()] ?? AdPriority.any)
       .toList();
+
+  List<AdNetwork> getBannerPriorityList() {
+    final List<AdNetwork> list = [];
+    for (int i = 0; i < bannerAdPriorityList.length; i++) {
+      if (bannerAdPriorityList[i] == AdPriority.admob) {
+        list.add(AdNetwork.admob);
+      } else if (bannerAdPriorityList[i] == AdPriority.facebook) {
+        list.add(AdNetwork.facebook);
+      } else if (bannerAdPriorityList[i] == AdPriority.appLovin) {
+        list.add(AdNetwork.appLovin);
+      } else if (bannerAdPriorityList[i] == AdPriority.unity) {
+        list.add(AdNetwork.unity);
+      }
+    }
+    return list;
+  }
 
   static Future<void> fetch() async {
     var url = Uri.https('nooralibutt.github.io', _endPoint);

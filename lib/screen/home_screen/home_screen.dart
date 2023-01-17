@@ -9,7 +9,7 @@ import 'package:love_test_app/screen/quiz_list_screen/quiz_list_screen.dart';
 import 'package:love_test_app/utils/all_utilities.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const String routeName = 'home_screen';
+  static const String routeName = '/home_screen';
 
   const HomeScreen({Key? key}) : super(key: key);
 

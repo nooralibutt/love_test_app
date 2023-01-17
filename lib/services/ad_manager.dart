@@ -18,7 +18,7 @@ class AdManager {
 
   StreamSubscription? _streamSubscription;
 
-  Future<void> initialize() async {
+  Future<void> initialize({required bool isTrackingEnabled}) async {
     AdSetting.fetch();
 
     const targetingInfo =
@@ -47,33 +47,14 @@ class AdManager {
       admobConfiguration: requestConf,
       adMobAdRequest: targetingInfo,
       fbTestingId: 'a56ec8ce-cb14-4ec3-8a92-7bde5da4f160',
+      fbiOSAdvertiserTrackingEnabled: isTrackingEnabled,
+      isAgeRestrictedUserForApplovin: true,
     );
   }
 
-  Widget showPriorityBanner() {
-    final list = AdSetting.singleton.adPriorityList;
-    if (list == null || list.isEmpty) {
-      return const EasyBannerAd(
-          adNetwork: AdNetwork.appLovin, adSize: AdSize.banner);
-    }
-
-    for (int i = 0; i < list.length; i++) {
-      if (list[i] == AdPriority.appLovin) {
-        return const EasyBannerAd(
-            adNetwork: AdNetwork.appLovin, adSize: AdSize.banner);
-      } else if (list[i] == AdPriority.facebook) {
-        return const EasyBannerAd(
-            adNetwork: AdNetwork.facebook, adSize: AdSize.banner);
-      } else if (list[i] == AdPriority.admob) {
-        return const EasyBannerAd(
-            adNetwork: AdNetwork.admob, adSize: AdSize.banner);
-      } else if (list[i] == AdPriority.unity) {
-        return const EasyBannerAd(
-            adNetwork: AdNetwork.unity, adSize: AdSize.banner);
-      }
-    }
-    return const EasyBannerAd(
-        adNetwork: AdNetwork.appLovin, adSize: AdSize.banner);
+  Widget showPriorityBanner({AdSize adSize = AdSize.banner}) {
+    final list = AdSetting.singleton.getBannerPriorityList();
+    return EasySmartBannerAd(priorityAdNetworks: list, adSize: adSize);
   }
 
   bool showPriorityInterstitial() {

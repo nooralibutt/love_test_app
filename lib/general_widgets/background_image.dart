@@ -8,18 +8,16 @@ class BackgroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/bg_image.png'),
-                fit: BoxFit.cover,
-              ),
+      body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg_image.png'),
+              fit: BoxFit.cover,
             ),
-            child: child),
-      ),
+          ),
+          child: SafeArea(child: child)),
     );
   }
 }
